@@ -47,7 +47,6 @@ document.addEventListener("DOMContentLoaded", () => {
             return;
         }
 
-        // Prevent repeated wrong guesses
         if (userGuess !== randomNumber && previousGuesses.includes(userGuess)) {
             message.textContent = `You've already guessed ${userGuess}. Try a different number!`;
             message.style.color = "purple";
@@ -57,14 +56,12 @@ document.addEventListener("DOMContentLoaded", () => {
             return;
         }
 
-        // Only increase attempts if guess is not a repeat
         let isRepeat = false;
         if (userGuess !== randomNumber && previousGuesses.includes(userGuess)) {
             isRepeat = true;
         }
         if (!isRepeat) {
             attempts++;
-            // Decrease score by 1 for each wrong guess
             if (userGuess !== randomNumber) {
                 scoreValue--;
                 score.textContent = scoreValue;
@@ -82,7 +79,7 @@ document.addEventListener("DOMContentLoaded", () => {
             guessBtn.disabled = true;
             document.body.style.backgroundColor = '#209e1cff';
             document.querySelector('.number').textContent = randomNumber;
-            // Highscore logic: keep highscore at 20 if guessed correctly on first try, otherwise update if scoreValue is higher
+           
             if (scoreValue > highscore) {
                 highscore = scoreValue;
             }
